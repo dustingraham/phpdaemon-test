@@ -1,5 +1,10 @@
 <?php namespace DustinGraham\ReactMysql;
 
+/**
+ * Class Route
+ * @package DustinGraham\ReactMysql
+ * @property \DustinGraham\ReactMysql\Application $appInstance
+ */
 class Route extends \PHPDaemon\WebSocket\Route
 {
     public function onFrame($data, $type)
@@ -11,6 +16,20 @@ class Route extends \PHPDaemon\WebSocket\Route
                 {
                     D('Example Websocket pong client callback.');
                 });
+        }
+        
+        if ($data == 'check')
+        {
+            $client = $this->client;
+            $this->appInstance->sql->getConnection(function($sql) use ($client) {
+                $sql->query('SELECT * FROM test', function($sql, $success) use ($client)
+                {
+                    D($sql);
+                    D($success);
+                    $rows = $sql->resultRows;
+                    $client->sendFrame('works: '.count($rows));
+                });
+            });
         }
     }
     

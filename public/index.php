@@ -15,7 +15,8 @@
     }
 </script>
 <button onclick="create();">Create WebSocket</button>
-<button onclick="ws.send('ping');">Send ping</button>
+<button onclick="ws.send('ping');">ping</button>
+<button onclick="ws.send('check');">check</button>
 <button onclick="ws.close();">Close WebSocket</button>
 <div id="log" style="width:300px; height: 300px; border: 1px solid #999999; overflow:auto;"></div>
 </body>
