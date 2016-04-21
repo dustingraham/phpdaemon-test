@@ -5,5 +5,6 @@ class TestClass
     public function test()
     {
         // Test
+        
     }
 }

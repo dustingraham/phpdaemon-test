@@ -6,4 +6,11 @@ class TestTestCase extends PHPUnit_Framework_TestCase
     {
         $this->assertTrue(true);
     }
+
+    public function testClass()
+    {
+        $class = new \DustinGraham\ReactMysql\TestClass();
+
+        $class->test();
+    }
 }
